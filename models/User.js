@@ -4,6 +4,11 @@ let passportLocalMongoose = require('passport-local-mongoose');
 
 let userSchema = new Schema({
   username: String,
+  habitList: {
+    id: Number,
+    list: Array, //list of habits
+  },
+  oldHabitLists: Array
 }, { timestamps: true })
 
 userSchema.plugin(passportLocalMongoose, { usernameField: "username" })

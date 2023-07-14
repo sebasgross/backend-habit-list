@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.16.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.0",
     "dotenv": "^16.0.2",
     "express": "~4.14.1",
@@ -20,5 +22,8 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
     "serve-favicon": "~2.3.2"
+  },
+  "devDependencies": {
+    "prettier": "3.0.0"
   }
 }
