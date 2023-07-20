@@ -24,7 +24,6 @@ router.get("/logout",(req, res, next) => {
 
   req.logout(function(err) {
     if (err) { return next(err); }
-    // res.redirect('/');
     res.status(200).clearCookie('connect.sid', {path: '/'}).json({message: "User is logged out"})
   });
 
@@ -42,36 +41,8 @@ router.post("/signup", (req, res, next) => {
   });
 
 router.get("/private", isAuth, (req, res, next) => {
-  res.status(200).json({ message: "Access granted: Clearance 1", user: req.user });
+  res.status(200).json({ message: "Access granted: Clearance 1", user: req.user, habitList: req.user.habitList});
 })
 
-router.get("/get/habit-list", isAuth, (req,res,next) => {
-  // User.findById(req.user._id)
-  //   .then((response) => {
-  //     res.status(200).json(response.data)
-  //   })
-    res.status(200).json(req.user.habitList)
-
-})
-
-//Add habit list
-router.post("/create/habit-list", isAuth, (req, res, next) => {
-  // const id = req.body.id;
-  // const list = req.body.list; 
-  console.log("hola");
-  console.log("user" , req.user)
-  console.log("body ", req.body);
-
-  User.findByIdAndUpdate({_id: req.user._id,},{ habitList: { id: Date.now(), list: [...list, req.body]}} )
-    .then(response => {
-      res.status(201).json(response);
-    })
-    .catch(e => console.log( e));
-})
-
-//index
-// router.get('/*', (req, res, next) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'))
-// })
 
 module.exports = router;

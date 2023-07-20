@@ -5,8 +5,8 @@ let passportLocalMongoose = require('passport-local-mongoose');
 let userSchema = new Schema({
   username: String,
   habitList: {
-    id: Number,
-    list: Array, //list of habits
+    type: Schema.Types.ObjectId,
+    ref: "HabitList"
   },
   oldHabitLists: Array
 }, { timestamps: true })
