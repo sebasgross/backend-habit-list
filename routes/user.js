@@ -31,6 +31,8 @@ router.get("/logout",(req, res, next) => {
 
 //signup
 router.post("/signup", (req, res, next) => {
+
+  console.log(req.body)
   const password = req.body.password
 
     User.register(req.body, password)
